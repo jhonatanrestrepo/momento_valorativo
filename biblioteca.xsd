@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+    <xs:element name="bib">
+        <xs:complexType>
+            <xs:sequence>
+                <xs:element name="libro" maxOccurs="unbounded">
+                    <xs:complexType>
+                        <xs:sequence>
+                            <xs:element name="titulo" type="xs:string" maxOccurs="unbounded" minOccurs="1"/>
+                            <xs:element name="autor" maxOccurs="unbounded" minOccurs="1">
+                                <xs:complexType>
+                                    <xs:sequence>
+                                        <xs:element name="apellido" minOccurs="1">
+                                            <xs:simpleType>
+                                                <xs:restriction base="xs:string">
+                                                    <xs:pattern value="([a-z])*"/>
+                                                </xs:restriction>
+                                            </xs:simpleType>
+                                        </xs:element>
+                                        <xs:element name="nombre" maxOccurs="unbounded" minOccurs="1"/>
+                                    </xs:sequence>
+                                    <xs:attribute name="cedula" type="xs:ID" use="required"/>
+                                    <xs:attribute name="foto" type="xs:string" use="optional"/>
+                                </xs:complexType>
+                            </xs:element>
+                            <xs:element name="editorial" maxOccurs="unbounded" minOccurs="1"/>
+                            <xs:element name="precio" maxOccurs="unbounded" minOccurs="1"/>
+
+
+                        </xs:sequence>
+                        <xs:attribute name="cod_pais">
+                            <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:enumeration value="ESP"/>
+                                    <xs:enumeration value="FRA"/>
+                                    <xs:enumeration value="ITA"/>
+                                    <xs:enumeration value="ALE"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                        </xs:attribute>
+                        <xs:attribute name="anyo" type="xs:integer" use="required"/>
+                    </xs:complexType>
+                </xs:element>
+            </xs:sequence>
+            <xs:attribute name="nombre" type="xs:string" use="required"/>
+            <xs:attribute name="centro" type="xs:string" use="required"/>
+            <xs:attribute name="portada" type="xs:string" use="required"/>
+        </xs:complexType>
+    </xs:element>
+
+</xs:schema>
